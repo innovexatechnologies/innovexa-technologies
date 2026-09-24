@@ -34,13 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   /* ---------- Mobile nav toggle ---------- */
-  var navToggle = document.getElementById('navToggle');
-  var mainNav = document.getElementById('mainNav');
+  var navToggle = document.getElementById('navToggle') || document.querySelector('.nav-toggle') || document.getElementById('menuToggle');
+  var mainNav = document.getElementById('mainNav') || document.querySelector('.main-nav') || document.querySelector('.nav nav');
 
   if (navToggle && mainNav) {
     navToggle.addEventListener('click', function () {
       var isOpen = mainNav.classList.toggle('open');
       navToggle.classList.toggle('open', isOpen);
+      navToggle.classList.toggle('active', isOpen);
+      navToggle.classList.toggle('is-open', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
@@ -49,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
       link.addEventListener('click', function () {
         mainNav.classList.remove('open');
         navToggle.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });

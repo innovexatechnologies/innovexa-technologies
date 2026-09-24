@@ -1,0 +1,419 @@
+/* ==========================================================================
+   INNOVEXA TECHNOLOGIES — Master Responsive Stylesheet (css/responsive.css)
+   Comprehensive Mobile & Tablet Breakpoint Optimization
+   Guarantees 100% responsive, fluid, pixel-perfect layout across all screens.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL RESPONSIVE RESET & OVERFLOW GUARDS
+   -------------------------------------------------------------------------- */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, *::before, *::after {
+  max-width: 100%;
+}
+
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+pre, code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-x: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, li, label {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Container safety */
+.container,
+.hero-inner,
+.page-hero-inner,
+.section-inner,
+.site-header .header-inner,
+.site-footer .footer-inner {
+  width: 100% !important;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+/* Touch target sizing */
+a, button, input, select, textarea, .nav-toggle, .btn {
+  touch-action: manipulation;
+}
+
+/* --------------------------------------------------------------------------
+   2. NAVBAR & MOBILE MENU OVERRIDES (< 992px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .site-header .header-inner,
+  .nav {
+    height: 70px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .brand-text {
+    font-size: 1rem !important;
+  }
+
+  .nav-toggle,
+  .nav button.menu-btn,
+  #navToggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+
+  /* Shared main nav drawer */
+  .main-nav,
+  .nav nav {
+    position: fixed !important;
+    top: 70px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-height: calc(100vh - 70px) !important;
+    overflow-y: auto !important;
+    background: rgba(5, 7, 13, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(198, 206, 224, 0.15) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+    padding: 20px 24px 30px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    z-index: 1000 !important;
+  }
+
+  .main-nav.open,
+  .main-nav.active,
+  .nav nav.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  .main-nav a,
+  .nav nav a {
+    display: block !important;
+    padding: 12px 16px !important;
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    border-bottom: 1px solid rgba(198, 206, 224, 0.08) !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .main-nav a.nav-cta,
+  .nav nav a.cta-mini {
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, #2f6bff, #1c46c9) !important;
+    color: #ffffff !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. TABLET LANDSCAPE & PORTRAIT (768px to 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Grids */
+  .hero-inner,
+  .about-grid,
+  .home-intro-grid,
+  .split,
+  .reverse,
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .services-grid,
+  .why-grid,
+  .diff-grid,
+  .project-grid,
+  .review-page-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 36px !important;
+  }
+
+  /* 3D Visuals scaling */
+  .visual,
+  .universe-map,
+  .stack,
+  .phone-scene,
+  .browser-scene {
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. MOBILE DEVICES (<= 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Typography adjustment */
+  h1 {
+    font-size: clamp(2.2rem, 7.5vw, 3.8rem) !important;
+    line-height: 1.15 !important;
+  }
+  h2 {
+    font-size: clamp(1.7rem, 5.5vw, 2.6rem) !important;
+    line-height: 1.2 !important;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.8rem) !important;
+  }
+
+  .section-head h1,
+  .section-head h2 {
+    font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+  }
+
+  /* Global section paddings */
+  .section,
+  .about,
+  .services,
+  .process,
+  .why,
+  .contact,
+  .home-intro,
+  .cta-banner,
+  .starting,
+  .final {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero,
+  .page-hero {
+    padding-top: 80px !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    padding-top: 36px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Buttons & CTAs */
+  .hero-actions,
+  .cta-banner-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .hero-actions .btn,
+  .cta-banner-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Single column for all grid items */
+  .services-grid,
+  .why-grid,
+  .diff-grid,
+  .project-grid,
+  .review-page-grid,
+  .steps,
+  .footer-grid,
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    padding: 24px 16px !important;
+  }
+
+  .stat {
+    border-left: none !important;
+    padding: 10px !important;
+  }
+
+  /* 3D Visual & Interactive Map Adjustments */
+  .universe-map {
+    height: auto !important;
+    min-height: 480px !important;
+    padding: 20px 10px !important;
+  }
+
+  .core {
+    width: 130px !important;
+    height: 130px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .node {
+    padding: 8px 12px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .n-app { left: 2% !important; top: 8% !important; }
+  .n-web { right: 2% !important; top: 8% !important; }
+  .n-ui  { left: 2% !important; bottom: 20% !important; }
+  .n-shop{ right: 2% !important; bottom: 20% !important; }
+  .n-ai  { left: 50% !important; bottom: 4% !important; }
+
+  .stack {
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .visual {
+    height: auto !important;
+    min-height: 320px !important;
+  }
+
+  .phone.front {
+    width: 220px !important;
+    height: 430px !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+
+  .phone.back {
+    display: none !important;
+  }
+
+  .browser {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 280px !important;
+    transform: none !important;
+    margin-bottom: 16px !important;
+  }
+
+  .ui-scene {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .ui-card {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    min-height: 300px !important;
+    transform: none !important;
+  }
+
+  .ui-card.before {
+    display: none !important;
+  }
+
+  /* Code Window */
+  .code-window {
+    border-radius: 12px !important;
+  }
+  .code-body {
+    padding: 14px !important;
+  }
+  .code-body code {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. NARROW MOBILE (<= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .container,
+  .hero-inner,
+  .page-hero-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 8vw, 2.6rem) !important;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2.1rem) !important;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .hero-badges {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .glow-card,
+  .contact-form-wrap,
+  .diff-grid article {
+    padding: 20px 16px !important;
+  }
+
+  .choices button {
+    padding: 10px 14px !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. EXTRA SMALL SCREEN GUARDS (<= 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .brand-text {
+    font-size: 0.88rem !important;
+  }
+
+  .nav-toggle {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .btn {
+    padding: 12px 18px !important;
+    font-size: 0.88rem !important;
+  }
+}

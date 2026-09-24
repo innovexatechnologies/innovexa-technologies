@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 
-root = Path(r'c:\Users\Dell\OneDrive\Desktop\Company-Website')
+root = Path(__file__).resolve().parent
 index_path = root / 'index.html'
 text = index_path.read_text(encoding='utf-8')
 
