@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var mainNav = document.getElementById('mainNav') || document.querySelector('.main-nav') || document.querySelector('.nav nav');
 
   if (navToggle && mainNav) {
-    navToggle.addEventListener('click', function () {
+    navToggle.addEventListener('click', function (e) {
+      if (e) e.stopPropagation();
       var isOpen = mainNav.classList.toggle('open');
       navToggle.classList.toggle('open', isOpen);
       navToggle.classList.toggle('active', isOpen);
@@ -55,6 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Close mobile nav when clicking outside header/nav
+    document.addEventListener('click', function (e) {
+      if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+        mainNav.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
