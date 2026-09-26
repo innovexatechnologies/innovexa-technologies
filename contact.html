@@ -16,6 +16,10 @@
 .final .cta{background:#fff;color:var(--blue);border-radius:8px;transition:background .2s ease,color .2s ease}.final .cta:hover{background:var(--blue);color:#fff}
 @media(max-width:620px){.contact-node.email{left:0;right:auto;top:auto;bottom:28%}}
 @media(max-width:620px){.contact-node.email{left:0;right:auto;top:auto;bottom:22%}.contact-node.phone{top:50%;right:0;bottom:auto;transform:translateY(-50%)}}
+.project-grid .intro.reveal{transform:translateX(-48px)}
+.project-grid .form.reveal{transform:translateX(48px)}
+.project-grid .intro.reveal.visible,.project-grid .form.reveal.visible{opacity:1;transform:translateX(0)}
+@media(prefers-reduced-motion:reduce){.project-grid .intro.reveal,.project-grid .form.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
