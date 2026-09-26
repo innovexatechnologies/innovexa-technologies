@@ -426,10 +426,9 @@
         .hero-visual {
             position: relative;
             min-width: 0;
-            perspective: 1800px;
         }
 
-        .carousel-frame {
+        .hero-image-frame {
             position: relative;
             width: 100%;
             aspect-ratio: 1.08 / 1;
@@ -440,12 +439,9 @@
             box-shadow:
                 0 30px 90px rgba(6,10,20,.68),
                 inset 0 1px 0 rgba(255,255,255,.06);
-            transform-style: preserve-3d;
-            transform: rotateY(-5deg) rotateX(2deg);
-            transition: transform .8s var(--ease), box-shadow .5s ease;
         }
 
-        .carousel-frame::before {
+        .hero-image-frame::before {
             content: "";
             position: absolute;
             inset: 8% -5% -7% 8%;
@@ -454,7 +450,7 @@
             z-index: -2;
         }
 
-        .carousel-frame::after {
+        .hero-image-frame::after {
             content: "";
             position: absolute;
             inset: 0;
@@ -464,54 +460,11 @@
             z-index: 5;
         }
 
-        .hero-carousel {
-            height: 100%;
-        }
-
-        .hero-carousel .owl-stage-outer,
-        .hero-carousel .owl-stage,
-        .hero-carousel .owl-item {
-            height: 100%;
-        }
-
-        .hero-slide {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: var(--navy-2);
-            border-radius: 30px;
-        }
-
-        .hero-slide img {
+        .hero-static-image {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(1.05) contrast(1.12) brightness(.82);
-            transform: scale(1.03);
-            transition: transform 1.5s var(--ease);
-        }
-
-        .owl-item.active .hero-slide img {
-            transform: scale(1);
-        }
-
-        .hero-slide::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(3,5,10,.06) 22%,
-                    rgba(3,5,10,.84) 100%
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(4,7,15,.45),
-                    transparent 58%
-                );
-            pointer-events: none;
         }
 
         .slide-line {
@@ -562,11 +515,6 @@
             margin-top: 9px;
             max-width: 400px;
             line-height: 1.6;
-        }
-
-        .hero-carousel .owl-nav,
-        .hero-carousel .owl-dots {
-            display: none !important;
         }
 
         /* ================= FLOATING DATA CARDS ================= */
@@ -1052,36 +1000,15 @@
                 );
         }
 
-        .commerce-carousel {
+        .commerce-image {
             position: absolute;
             inset: 0;
-            z-index: 1;
-        }
-
-        .commerce-carousel .owl-stage-outer,
-        .commerce-carousel .owl-stage,
-        .commerce-carousel .owl-item {
-            height: 100%;
-        }
-
-        .commerce-slide {
-            position: relative;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .commerce-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: .7;
-            filter: saturate(.9) contrast(1.12) brightness(.8);
-            transform: scale(1.04);
-            transition: transform 1.2s ease;
-        }
-
-        .commerce-carousel .owl-item.active .commerce-slide img {
-            transform: scale(1);
+            opacity: .88;
+            filter: saturate(.95) contrast(1.05) brightness(.9);
+            z-index: 1;
         }
 
         .commerce-visual::after {
@@ -1091,15 +1018,10 @@
             background:
                 linear-gradient(
                     90deg,
-                    rgba(6,9,19,.95),
+                    rgba(6,9,19,.2),
                     transparent 65%
                 );
             z-index: 2;
-        }
-
-        .commerce-carousel .owl-nav,
-        .commerce-carousel .owl-dots {
-            display: none !important;
         }
 
         .solutions-grid {
@@ -1609,10 +1531,6 @@
                 font-size: clamp(50px, 6vw, 78px);
             }
 
-            .carousel-frame {
-                transform: rotateY(-3deg) rotateX(2deg);
-            }
-
             .floating-card.top {
                 right: -20px;
             }
@@ -1659,9 +1577,8 @@
                 margin-inline: auto;
             }
 
-            .carousel-frame {
+            .hero-image-frame {
                 aspect-ratio: 1.45 / 1;
-                transform: none;
             }
 
             .service-grid {
@@ -1741,7 +1658,7 @@
                 margin-top: 40px;
             }
 
-            .carousel-frame {
+            .hero-image-frame {
                 aspect-ratio: 1.18 / 1;
             }
 
@@ -1893,7 +1810,7 @@
                 width: 100%;
             }
 
-            .carousel-frame {
+            .hero-image-frame {
                 aspect-ratio: .96 / 1;
             }
 
@@ -2033,7 +1950,7 @@
                 font-size: 43px;
             }
 
-            .carousel-frame {
+            .hero-image-frame {
                 aspect-ratio: .88 / 1;
             }
 
@@ -2202,83 +2119,17 @@
 
                 </div>
 
-                <div class="hero-visual reveal delay-2">
+                <div class="hero-visual">
 
-                    <div class="carousel-frame">
+                    <div class="hero-image-frame">
 
-                        <div class="owl-carousel hero-carousel">
-
-                            <!-- SLIDE 01 -->
-
-                            <div class="hero-slide">
-
-                                <div class="slide-line"></div>
-
-                                <img
-                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2200&q=90"
-                                    alt="Software team collaborating on digital services"
-                                    fetchpriority="high"
-                                >
-
-                            </div>
-
-                            <!-- SLIDE 02 -->
-
-                            <div class="hero-slide">
-
-                                <div class="slide-line"></div>
-
-                                <img
-                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2200&q=90"
-                                    alt="Advanced software development workstation"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <!-- SLIDE 03 -->
-
-                            <div class="hero-slide">
-
-                                <div class="slide-line"></div>
-
-                                <img
-                                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
-                                    alt="Modern digital infrastructure and cloud systems"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <!-- SLIDE 04 -->
-
-                            <div class="hero-slide">
-
-                                <div class="slide-line"></div>
-
-                                <img
-                                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2200&q=90"
-                                    alt="Creative digital product interface design workspace"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                            <!-- SLIDE 05 -->
-
-                            <div class="hero-slide">
-
-                                <div class="slide-line"></div>
-
-                                <img
-                                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=90"
-                                    alt="Professional product strategy and digital transformation"
-                                    loading="lazy"
-                                >
-
-                            </div>
-
-                        </div>
+                        <img
+                            class="hero-static-image"
+                            src="assets/banners/service1.jpg"
+                            alt="Innovexa software and digital services"
+                            fetchpriority="high"
+                            decoding="async"
+                        >
 
                     </div>
 
@@ -2678,19 +2529,7 @@
 
                     <div class="commerce-visual">
 
-                        <div class="owl-carousel commerce-carousel">
-
-                            <div class="commerce-slide"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=2000&q=90" alt="Digital product interface design" loading="lazy"></div>
-
-                            <div class="commerce-slide"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2000&q=90" alt="Team planning a digital product" loading="lazy"></div>
-
-                            <div class="commerce-slide"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=90" alt="Business analytics and data systems" loading="lazy"></div>
-
-                            <div class="commerce-slide"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=90" alt="Cloud infrastructure and technology systems" loading="lazy"></div>
-
-                            <div class="commerce-slide"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2000&q=90" alt="Software development workspace" loading="lazy"></div>
-
-                        </div>
+                        <img class="commerce-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85" alt="Digital product design and software workspace" loading="eager" decoding="async">
 
                     </div>
 
@@ -2976,86 +2815,47 @@
 
     document.addEventListener("DOMContentLoaded", function () {
 
-        /* =====================================================
-           OWL CAROUSEL
-           ===================================================== */
-
-        const carousel = $(".hero-carousel");
-
-        carousel.owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            smartSpeed: 900,
-            fluidSpeed: true,
-            mouseDrag: false,
-            touchDrag: true,
-            pullDrag: false,
-            dots: false,
-            nav: false,
-            margin: 0,
-            animateOut: "fadeOut",
-            animateIn: "fadeIn",
-            responsive: {
-                0: {
-                    items: 1
-                },
-                561: {
-                    items: 1
-                },
-                801: {
-                    items: 1
-                },
-                1101: {
-                    items: 1
-                }
-            }
-        });
-
-        $(".commerce-carousel").owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            smartSpeed: 700,
-            nav: false,
-            dots: false,
-            mouseDrag: false,
-            touchDrag: true,
-            pullDrag: false,
-            animateOut: "fadeOut",
-            animateIn: "fadeIn",
-            navText: ['<span>‹</span>', '<span>›</span>']
-        });
-
         const solutionDetails =
             document.querySelectorAll(".solution-detail");
 
-        $(".commerce-carousel").on(
-            "changed.owl.carousel",
-            function (event) {
-
-                if (!event.item || !event.item.count) {
-                    return;
-                }
-
-                const activeIndex =
-                    event.item.index % event.item.count;
-
-                solutionDetails.forEach(function (detail) {
-
-                    detail.classList.toggle(
-                        "is-active",
-                        Number(detail.dataset.serviceIndex) === activeIndex
-                    );
-
-                });
-
+        const solutionImages = [
+            {
+                src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85",
+                alt: "Digital product design and software workspace"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85",
+                alt: "Software team collaborating on product strategy"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+                alt: "Analytics dashboard and business data"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+                alt: "Cloud infrastructure and connected technology"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+                alt: "Software engineers building a digital product"
             }
-        );
+        ];
+        const commerceImage = document.querySelector(".commerce-image");
+
+        solutionImages.slice(1).forEach(function (image) {
+            const preload = new Image();
+            preload.src = image.src;
+        });
+
+        let activeSolution = 0;
+        window.setInterval(function () {
+            activeSolution = (activeSolution + 1) % solutionDetails.length;
+            commerceImage.src = solutionImages[activeSolution].src;
+            commerceImage.alt = solutionImages[activeSolution].alt;
+            solutionDetails.forEach(function (detail, index) {
+                detail.classList.toggle("is-active", index === activeSolution);
+            });
+        }, 3000);
 
 
         /* =====================================================
@@ -3173,72 +2973,6 @@
 
 
         /* =====================================================
-           HERO PARALLAX
-           ===================================================== */
-
-        const heroVisual =
-            document.querySelector(".hero-visual");
-
-        if (heroVisual && window.innerWidth > 1100) {
-
-            heroVisual.addEventListener(
-                "mousemove",
-                function (event) {
-
-                    const rect =
-                        heroVisual.getBoundingClientRect();
-
-                    const x =
-                        (event.clientX - rect.left)
-                        / rect.width
-                        - 0.5;
-
-                    const y =
-                        (event.clientY - rect.top)
-                        / rect.height
-                        - 0.5;
-
-                    const frame =
-                        heroVisual.querySelector(
-                            ".carousel-frame"
-                        );
-
-                    if (frame) {
-
-                        frame.style.transform =
-                            `perspective(1800px)
-                             rotateY(${x * -7 - 2}deg)
-                             rotateX(${y * 4}deg)`;
-
-                    }
-
-                }
-            );
-
-
-            heroVisual.addEventListener(
-                "mouseleave",
-                function () {
-
-                    const frame =
-                        heroVisual.querySelector(
-                            ".carousel-frame"
-                        );
-
-                    if (frame) {
-
-                        frame.style.transform =
-                            "perspective(1800px) rotateY(-3deg) rotateX(2deg)";
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
            SMOOTH ANCHOR SCROLL
            ===================================================== */
 
@@ -3279,30 +3013,6 @@
 
             });
 
-
-        /* =====================================================
-           RESIZE SAFETY
-           ===================================================== */
-
-        let resizeTimer;
-
-        window.addEventListener(
-            "resize",
-            function () {
-
-                clearTimeout(resizeTimer);
-
-                resizeTimer =
-                    setTimeout(function () {
-
-                        carousel.trigger(
-                            "refresh.owl.carousel"
-                        );
-
-                    }, 200);
-
-            }
-        );
 
     });
 </script>
