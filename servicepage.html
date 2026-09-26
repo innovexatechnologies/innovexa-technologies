@@ -326,7 +326,8 @@
         }
 
         .btn-primary span,
-        .btn-primary strong {
+        .btn-primary strong,
+        .btn-primary svg {
             position: relative;
             z-index: 1;
         }
@@ -364,9 +365,21 @@
         }
 
         .btn span,
-        .btn strong {
+        .btn strong,
+        .btn svg {
             position: relative;
             z-index: 1;
+        }
+
+        .hero-actions .btn svg {
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+            transition: transform .25s var(--ease);
+        }
+
+        .hero-actions .btn:hover svg {
+            transform: translateX(3px);
         }
 
         .hero-meta {
@@ -1397,6 +1410,12 @@
             letter-spacing: -.05em;
         }
 
+        .stat:last-child .stat-value {
+            display: inline-block;
+            transform: scale(1.25);
+            transform-origin: left center;
+        }
+
         .stat-label {
             color: var(--silver-4);
             font-family: "IBM Plex Mono", monospace;
@@ -1849,6 +1868,10 @@
                 width: 100%;
             }
 
+            .hero .hero-actions .btn {
+                width: min(72%, 300px) !important;
+            }
+
             .hero-meta {
                 grid-template-columns: 1fr;
                 gap: 14px;
@@ -1979,6 +2002,10 @@
                 padding: 27px 22px;
             }
 
+            .stat:last-child .stat-value {
+                transform: scale(1.6);
+            }
+
             .cta {
                 min-height: 520px;
             }
@@ -2018,6 +2045,71 @@
                 transform:
                     rotateX(2deg)
                     scale(.58);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .services {
+                padding-bottom: 20px;
+            }
+
+            .engineering {
+                padding-top: 0;
+            }
+
+            .engineering-grid {
+                gap: 20px;
+            }
+
+            .engineering-visual {
+                min-height: 104px;
+                overflow: hidden;
+                perspective: none;
+            }
+
+            .stack {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: repeat(2, 48px);
+                gap: 8px;
+                width: 100%;
+                max-width: 500px;
+                height: 104px;
+                transform: none;
+                transform-style: flat;
+            }
+
+            .stack-panel {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: auto;
+                min-width: 0;
+                height: 48px;
+                padding: 7px 9px;
+                transform: none;
+            }
+
+            .stack-panel:nth-child(n) {
+                top: auto;
+                transform: none;
+            }
+
+            .stack-left {
+                min-width: 0;
+                gap: 7px;
+            }
+
+            .stack-title {
+                min-width: 0;
+                font-size: 12px;
+                line-height: 1.1;
+            }
+
+            .stack-status {
+                flex: 0 0 6px;
+                width: 6px;
+                height: 6px;
             }
         }
 
@@ -2090,13 +2182,19 @@
                         <a href="#core-services"
                            class="btn btn-primary">
                             <span>Explore Services</span>
-                            <strong>↗</strong>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m13 6 6 6-6 6"></path>
+                            </svg>
                         </a>
 
                         <a href="#contact"
                            class="btn btn-secondary">
                             Start a Project
-                            <strong>→</strong>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m13 6 6 6-6 6"></path>
+                            </svg>
                         </a>
 
                     </div>
