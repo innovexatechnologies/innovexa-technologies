@@ -2328,7 +2328,7 @@
 .dt-section{
     position:relative;
     width:100%;
-    min-height:760vh;
+    min-height:320vh;
     background:
         radial-gradient(
             circle at 50% 38%,
@@ -2350,6 +2350,9 @@
     min-height:620px;
     overflow:hidden;
     isolation:isolate;
+}
+.dt-section.is-complete{
+    min-height:max(100svh,620px);
 }
 /* =========================================================
    ATMOSPHERE
@@ -2876,7 +2879,7 @@
 ========================================================= */
 @media (max-width:800px){
     .dt-section{
-        min-height:690vh;
+        min-height:300vh;
     }
     .dt-sticky{
         min-height:600px;
@@ -2993,7 +2996,7 @@
 ========================================================= */
 @media (max-width:520px){
     .dt-section{
-        min-height:650vh;
+        min-height:280vh;
     }
     .dt-intro{
         top:27%;
@@ -3112,7 +3115,7 @@
 .signal-section{
     position:relative;
     width:100%;
-    height:720vh;
+    height:340vh;
     background:
         radial-gradient(
             ellipse at 50% 40%,
@@ -3141,6 +3144,9 @@
     display:flex;
     align-items:center;
     justify-content:center;
+}
+.signal-section.is-complete{
+    height:max(100svh,620px);
 }
 /* =========================================================
    BACKGROUND GRID
@@ -3879,7 +3885,7 @@
 ========================================================= */
 @media (max-width:900px){
     .signal-section{
-        height:650vh;
+        height:320vh;
     }
     .signal-copy{
         left:32px;
@@ -3914,7 +3920,7 @@
 ========================================================= */
 @media (max-width:700px){
     .signal-section{
-        height:620vh;
+        height:300vh;
     }
     .signal-sticky{
         min-height:560px;
@@ -4050,7 +4056,7 @@
 ========================================================= */
 @media (max-width:430px){
     .signal-section{
-        height:600vh;
+        height:280vh;
     }
     .signal-copy{
         top:110px;
@@ -11305,6 +11311,7 @@
         ){
 
             completionDispatched = true;
+            section.classList.add("is-complete");
             window.dispatchEvent(
                 new CustomEvent("home:section4-complete")
             );
@@ -14044,6 +14051,7 @@
         ){
 
             completionDispatched = true;
+            section.classList.add("is-complete");
             window.dispatchEvent(
                 new CustomEvent("home:section5-complete")
             );

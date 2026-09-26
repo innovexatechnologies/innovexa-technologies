@@ -92,7 +92,7 @@ a{
 .dt-section{
     position:relative;
     width:100%;
-    min-height:760vh;
+    min-height:320vh;
     background:
         radial-gradient(
             circle at 50% 38%,
@@ -117,6 +117,9 @@ a{
 
     overflow:hidden;
     isolation:isolate;
+}
+.dt-section.is-complete{
+    min-height:max(100svh,620px);
 }
 
 
@@ -876,7 +879,7 @@ a{
 @media (max-width:800px){
 
     .dt-section{
-        min-height:690vh;
+        min-height:300vh;
     }
 
     .dt-sticky{
@@ -1040,7 +1043,7 @@ a{
 @media (max-width:520px){
 
     .dt-section{
-        min-height:650vh;
+        min-height:280vh;
     }
 
     .dt-intro{
@@ -3844,6 +3847,10 @@ a{
             progress =
                 targetProgress;
 
+        }
+
+        if(progress >= 1 && !section.classList.contains("is-complete")){
+            section.classList.add("is-complete");
         }
 
 
