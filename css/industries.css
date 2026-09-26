@@ -1172,6 +1172,8 @@ body.is-leaving{ opacity: 0; }
 
   .hero-orb-1{ width: 220px; height:220px; }
   .hero-orb-2{ width: 160px; height:160px; }
+  .cta-banner .cta-banner-actions{ align-items:center !important; }
+  .cta-banner .cta-banner-actions .btn{ width:min(62%, 240px) !important; }
 }
 
 /* Small phones — 320 to 430px: tighten spacing rather than just shrinking type */
