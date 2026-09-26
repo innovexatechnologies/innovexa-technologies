@@ -2338,9 +2338,44 @@ img{
 
     align-items:center;
 
-    border-bottom:
-        1px solid
-        #394762;
+    gap:8px;
+
+    padding:4px;
+
+    border:1px solid rgba(91,140,255,.28);
+
+    border-radius:8px;
+
+    background:rgba(12,20,41,.72);
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.newsletter-form:focus-within{
+    border-color:var(--blue-light);
+
+    background:rgba(12,20,41,.96);
+
+    box-shadow:
+        0 0 0 3px rgba(91,140,255,.13),
+        0 10px 28px rgba(47,107,255,.12);
+
+    animation:newsletter-focus .4s ease-out;
+}
+
+@keyframes newsletter-focus{
+    0%{
+        transform:scale(.985);
+        box-shadow:0 0 0 0 rgba(91,140,255,0);
+    }
+
+    100%{
+        transform:scale(1);
+        box-shadow:0 0 0 3px rgba(91,140,255,.13),0 10px 28px rgba(47,107,255,.12);
+    }
 }
 
 .newsletter-form input{
@@ -2349,7 +2384,9 @@ img{
 
     min-width:0;
 
-    height:54px;
+    height:46px;
+
+    padding:0 12px;
 
     border:0;
 
@@ -2362,6 +2399,10 @@ img{
     font-size:12px;
 }
 
+.newsletter-form input:focus-visible{
+    outline:none;
+}
+
 .newsletter-form input::placeholder{
     color:#58647c;
 }
@@ -2370,9 +2411,15 @@ img{
 
     border:0;
 
-    background:transparent;
+    min-height:42px;
 
-    color:var(--blue-light);
+    padding:0 14px;
+
+    border-radius:6px;
+
+    background:linear-gradient(135deg,var(--blue-light),var(--blue));
+
+    color:var(--white);
 
     cursor:pointer;
 
@@ -2384,7 +2431,21 @@ img{
 
     text-transform:uppercase;
 
-    padding-left:15px;
+    transition:
+        transform .2s ease,
+        filter .2s ease;
+}
+
+.newsletter-form button:hover{
+    transform:translateY(-1px);
+
+    filter:brightness(1.08);
+}
+
+@media (prefers-reduced-motion:reduce){
+    .newsletter-form:focus-within{
+        animation:none;
+    }
 }
 
 
@@ -4421,7 +4482,7 @@ input:focus-visible{
                 type="email"
                 id="newsletterEmail"
                 placeholder="Your email address"
-                autocomplete="email"
+                autocomplete="off"
                 required
             >
 
