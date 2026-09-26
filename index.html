@@ -2674,6 +2674,13 @@
     right:17%;
     top:32%;
 }
+
+@media (min-width:1101px){
+    .dt-output:nth-child(2){
+        top:54%;
+    }
+}
+
 /* =========================================================
    FINAL MESSAGE
 ========================================================= */
@@ -2881,7 +2888,7 @@
     }
     .dt-intro{
         left:20px;
-        top:22%;
+        top:30%;
         width:calc(100% - 40px);
         transform:translate3d(0,-10%,0);
     }
@@ -2923,24 +2930,28 @@
         border-radius:11px;
     }
     .dt-output:nth-child(1){
-        left:5%;
-        top:48%;
+        left:8%;
+        top:12%;
     }
-    .dt-output:nth-child(2){
-        left:4%;
-        top:66%;
-    }
-    .dt-output:nth-child(3){
-        left:50%;
-        top:77%;
-    }
-    .dt-output:nth-child(4){
-        right:4%;
-        top:66%;
-    }
+
+    .dt-output:nth-child(2),
     .dt-output:nth-child(5){
-        right:5%;
-        top:48%;
+        display:none;
+    }
+
+    .dt-output:nth-child(3){
+        left:calc(50% - 170px);
+        top:40%;
+        transform:translate3d(0,18px,0) scale(.94);
+    }
+
+    .dt-output:nth-child(3).visible{
+        transform:translate3d(0,0,0) scale(1);
+    }
+
+    .dt-output:nth-child(4){
+        right:calc(50% - 170px);
+        top:40%;
     }
     .dt-output-small{
         font-size:7px;
@@ -2977,7 +2988,7 @@
         min-height:650vh;
     }
     .dt-intro{
-        top:19%;
+        top:27%;
     }
     .dt-title{
         font-size:clamp(32px,10.8vw,50px);
@@ -3006,23 +3017,28 @@
         border-radius:10px;
     }
     .dt-output:nth-child(1){
-        left:2%;
-        top:47%;
+        left:4%;
+        top:12%;
     }
-    .dt-output:nth-child(2){
-        left:2%;
-        top:64%;
-    }
-    .dt-output:nth-child(3){
-        top:75%;
-    }
-    .dt-output:nth-child(4){
-        right:2%;
-        top:64%;
-    }
+
+    .dt-output:nth-child(2),
     .dt-output:nth-child(5){
-        right:2%;
-        top:47%;
+        display:none;
+    }
+
+    .dt-output:nth-child(3){
+        left:calc(50% - 150px);
+        top:40%;
+        transform:translate3d(0,18px,0) scale(.94);
+    }
+
+    .dt-output:nth-child(3).visible{
+        transform:translate3d(0,0,0) scale(1);
+    }
+
+    .dt-output:nth-child(4){
+        right:calc(50% - 150px);
+        top:40%;
     }
     .dt-output-small{
         margin-bottom:3px;
