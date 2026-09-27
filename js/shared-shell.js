@@ -52,6 +52,11 @@
       shadow.appendChild(header.cloneNode(true));
       footerShadow.appendChild(footer.cloneNode(true));
 
+      footerShadow.querySelectorAll('.footer-social a[aria-label="Facebook"], .footer-social a[aria-label="Instagram"], .footer-social a[aria-label="LinkedIn"], .footer-social a[aria-label="Twitter / X"], .footer-social a[aria-label="TikTok"], .footer-social a[aria-label="WhatsApp"]').forEach(function (link) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      });
+
       shadow.querySelectorAll('a[href]').forEach(function (link) {
         var href = link.getAttribute('href');
         if (href && href.charAt(0) === '#') {

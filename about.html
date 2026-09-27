@@ -14,7 +14,9 @@
 .evolution-track::-webkit-scrollbar{display:none;width:0;height:0}
 .identity .orbit-a{width:min(78vw,calc(100svh + 20px));max-width:900px}
 .identity .orbit-b{width:min(35vw,calc(100svh - 160px));max-width:520px}
-@media (max-width:800px){.identity .orbit-a{width:min(94vw,calc(100svh + 10px))}.identity .orbit-b{width:min(52vw,calc(100svh - 150px))}}
+.dna .dna-core{border-color:transparent}.dna .core-ring{inset:auto;top:50%;left:50%;width:190px;height:190px;transform:translate(-50%,-50%);animation:spin-centered 18s linear infinite;border-radius:50%}
+@keyframes spin-centered{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media (max-width:800px){.identity{min-height:calc(100svh - 68px)}.identity .orbit-a,.identity .orbit-b{top:50%;left:50%;transform:translate(-50%,-50%)}.identity .orbit-a{width:min(94vw,calc(100svh + 10px))}.identity .orbit-b{width:min(52vw,calc(100svh - 150px))}.dna .node-3,.dna .node-4{bottom:28%}}
 .origin-grid .section-intro{opacity:0;transform:translate3d(-70px,0,0);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .origin-grid .timeline{opacity:0;transform:translate3d(70px,0,0);transition:opacity .8s var(--ease) .12s,transform .8s var(--ease) .12s}
 .origin.is-seen .origin-grid .section-intro,.origin.is-seen .origin-grid .timeline{opacity:1;transform:translate3d(0,0,0)}

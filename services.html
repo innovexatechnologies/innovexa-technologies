@@ -53,11 +53,11 @@
       });
 
       var profiles = {
-        Facebook: 'https://www.facebook.com/share/14mkxaJNSre/',
-        Instagram: 'https://www.instagram.com/innovexatechnologies_01?igsh=MWFoNDU5NzIyZDdqdg==',
+        Facebook: 'https://www.facebook.com/share/p/19RpGrEWoA/',
+        Instagram: 'https://www.instagram.com/innovexatechnologies_01?igsi=MWFoNDU5NzIyZDdqdg==',
         LinkedIn: 'https://www.linkedin.com/company/innovexa-digital/',
         X: 'https://x.com/innovexatech_01',
-        TikTok: 'https://vt.tiktok.com/ZSVKH9Ssy/',
+        TikTok: 'https://www.tiktok.com/@innovexa.technologies01',
         WhatsApp: 'https://wa.me/923247943761',
         GitHub: 'https://github.com/innovexatechnologies'
       };
@@ -111,6 +111,10 @@
           var label = link.getAttribute('aria-label');
           if (label === 'Twitter / X') label = 'X';
           if (label === 'YouTube') label = 'GitHub';
+          if (['Facebook', 'Instagram', 'LinkedIn', 'X', 'TikTok', 'WhatsApp'].indexOf(label) !== -1) {
+            link.target = '_blank';
+            link.rel = 'noopener';
+          }
           if (profiles[label]) {
             link.href = profiles[label];
             link.setAttribute('aria-label', label);

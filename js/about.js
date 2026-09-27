@@ -161,6 +161,7 @@
   const originScene = document.querySelector('.origin');
   const thinkingScene = document.querySelector('.thinking');
   const endingScene = document.querySelector('.ending');
+  const endingTitle = document.querySelector('.ending .kinetic-title');
 
   if ('IntersectionObserver' in window) {
 
@@ -247,23 +248,23 @@
       thinkingObserver.observe(thinkingScene);
     }
 
-    if (endingScene) {
+    if (endingScene && endingTitle) {
       const endingObserver = new IntersectionObserver(
         function (entries, observer) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('is-seen');
-              observer.unobserve(entry.target);
+              endingScene.classList.add('is-seen');
+              observer.unobserve(endingTitle);
             }
           });
         },
         {
-          threshold: 0.12,
-          rootMargin: '0px 0px -8% 0px'
+          threshold: 0.15,
+          rootMargin: '0px'
         }
       );
 
-      endingObserver.observe(endingScene);
+      endingObserver.observe(endingTitle);
     }
 
   } else {

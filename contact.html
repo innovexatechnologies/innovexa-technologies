@@ -10,6 +10,16 @@
 <link rel="stylesheet" href="css/contact.css">
 <style>
 .contact-back-to-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:50%;background:linear-gradient(135deg,#8fe8ff 0%,#4ba2ff 42%,#5b6dff 100%);color:#04121c;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -14px rgba(91,109,255,.8),inset 0 1px 0 rgba(255,255,255,.48),inset 0 -4px 12px rgba(22,80,170,.4);opacity:0;pointer-events:none;cursor:pointer;transform:translateY(18px) scale(.92) perspective(600px) rotateX(22deg);transition:opacity .25s ease,transform .25s ease,box-shadow .25s ease;z-index:100}.contact-back-to-top.is-visible{opacity:1;pointer-events:auto;transform:translateY(0) scale(1) perspective(600px) rotateX(0)}.contact-back-to-top:hover{transform:translateY(-4px) scale(1.04) perspective(600px) rotateX(8deg);box-shadow:0 18px 34px -12px rgba(91,109,255,.95),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -4px 14px rgba(34,76,184,.42)}.contact-back-to-top svg{width:20px;height:20px}@media (max-width:600px){.contact-back-to-top{right:16px;bottom:16px;width:46px;height:46px}}@media (prefers-reduced-motion:reduce){.contact-back-to-top{transition:none}.contact-back-to-top:hover{transform:none}}
+.form .submit{width:min(100%,220px);margin:18px 0 0 auto;padding:14px 18px;border-radius:8px;justify-content:center;gap:10px;font-size:13px;box-shadow:0 12px 28px rgba(47,107,255,.2);transition:transform .2s ease,box-shadow .2s ease}.form .submit:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(47,107,255,.28)}
+.contact-node.email{width:min(240px,100%)}.contact-node.email span{font-size:clamp(8px,2.5vw,10px);white-space:nowrap}
+.socials a:first-child{border-left:1px solid var(--line)}
+.final .cta{background:#fff;color:var(--blue);border-radius:8px;transition:background .2s ease,color .2s ease}.final .cta:hover{background:var(--blue);color:#fff}
+@media(max-width:620px){.contact-node.email{left:0;right:auto;top:auto;bottom:28%}}
+@media(max-width:620px){.contact-node.email{left:0;right:auto;top:auto;bottom:22%}.contact-node.phone{top:50%;right:0;bottom:auto;transform:translateY(-50%)}}
+.project-grid .intro.reveal{transform:translateX(-48px)}
+.project-grid .form.reveal{transform:translateX(48px)}
+.project-grid .intro.reveal.visible,.project-grid .form.reveal.visible{opacity:1;transform:translateX(0)}
+@media(prefers-reduced-motion:reduce){.project-grid .intro.reveal,.project-grid .form.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -39,11 +49,12 @@
 <section class="hero section" id="start"><div class="grid"></div><div class="orb orb1"></div><div class="orb orb2"></div><div class="container hero-inner reveal">
 <p class="eyebrow">01  LET'S START SOMETHING</p><h1>Have an Idea?<br><em>Let's Make It Real.</em></h1>
 <p>Tell us what you're imagining. We'll bring the strategy, design and technology to turn the possibility into something people can use.</p>
-<a class="scroll" href="#project">Start with the idea <span></span></a></div><div class="status">OPEN FOR NEW PROJECTS</div></section>
+<a class="scroll" href="#project">Start with the idea <span></span></a></div><div class="status"> </div></section>
+<!-- OPEN FOR NEW PROJECTS -->
 
 <section class="section project" id="project"><div class="container project-grid">
 <div class="intro reveal"><p class="eyebrow">02  TELL US WHAT YOU'RE BUILDING</p><h2>A Short Form.<br><em>A Better Start.</em></h2><p>No giant questionnaire. Just the essentials we need to understand the opportunity and start the right conversation.</p>
-<div class="note"><b>05</b><span><strong>Focused questions.</strong><small>Service · idea · name · email · optional budget</small></span></div></div>
+<div class="note"><b>*</b><span><strong>Focused questions.</strong><small>Service · idea · name · email · optional budget</small></span></div></div>
 <form class="form reveal" id="projectForm" novalidate><div class="progress"><span id="progress"></span></div>
 <label>What can we help you build?<select id="service" required><option value="">Select a service</option><option>App Development</option><option>Web Development</option><option>UI / UX Design</option><option>Shopify / E-commerce</option><option>AI & Automation</option><option>Something else</option></select><small class="error" data-error="service"></small></label>
 <label>Tell us about the project<textarea id="idea" rows="5" maxlength="1000" minlength="10" required placeholder="What are you trying to create, improve or solve?"></textarea><span class="meta"><small class="error" data-error="idea"></small><small id="count">0 / 1000</small></span></label>
@@ -56,7 +67,7 @@
 </form></div></section>
 
 <section class="section paths" id="path"><div class="container"><div class="center reveal"><p class="eyebrow">03 CHOOSE YOUR PATH</p><h2>How Should<br><em>We Start?</em></h2></div>
-<div class="path-grid reveal"><button class="path-card active" data-path="project"><small>01</small><b>Start a Project</b><span>You have an idea and want to build it.</span>â†—</button>
+<div class="path-grid reveal"><button class="path-card active" data-path="project"><small>01</small><b>Start a Project</b><span>You have an idea and want to build it.</span></button>
 <button class="path-card" data-path="partner"><small>02</small><b>Partner With Us</b><span>You need a digital team alongside yours.</span></button>
 <button class="path-card" data-path="hello"><small>03</small><b>Just Say Hello</b><span>Have a question, opportunity or introduction?</span></button></div>
 <div class="readout reveal" id="readout"><small>START A PROJECT</small><b>Bring us the possibility.</b><span>We'll help turn the first conversation into a clear next step.</span></div></div></section>
@@ -66,7 +77,7 @@
 <a class="contact-node location" href="#find"><small>LOCATION</small><b>Pakistan</b><span>Global delivery</span></a>
 <a class="contact-node email" href="mailto:innovexa.technologies01@gmail.com"><small>EMAIL</small><b>Write to us</b><span>innovexa.technologies01@gmail.com</span></a>
 <a class="contact-node phone" href="tel:+923247943761"><small>PHONE</small><b>+92 324 7943761</b><span>Let's talk</span></a></div>
-<div class="socials reveal"><a href="https://www.facebook.com/" target="_blank" rel="noopener">f Facebook</a><a href="https://www.instagram.com/" target="_blank" rel="noopener"> Instagram</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener">in LinkedIn</a><a href="https://x.com/" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a><a href="https://wa.me/" target="_blank" rel="noopener"> WhatsApp</a></div></div></section>
+<div class="socials reveal"><a href="https://www.facebook.com/share/p/19RpGrEWoA/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/innovexatechnologies_01?igsi=MWFoNDU5NzIyZDdqdg==" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@innovexa.technologies01" target="_blank" rel="noopener">TikTok</a><a href="https://www.linkedin.com/company/innovexa-digital/" target="_blank" rel="noopener">LinkedIn</a><a href="https://x.com/innovexatech_01" target="_blank" rel="noopener">Twitter</a><a href="https://wa.me/923247943761" target="_blank" rel="noopener">WhatsApp</a></div></div></section>
 
 <section class="section final" id="conversation"><div class="final-grid"></div><div class="container center reveal"><p class="eyebrow">05  THE CONVERSATION STARTS HERE</p><h2>Your Idea.<br><em>Our Expertise.</em><br>Let's Build It.</h2><p>Good things start with a simple conversation. Tell us where you want to go.</p><a class="cta" href="#project">SEND PROJECT REQUEST <span></span></a></div><strong class="ghost">BUILD</strong></section>
 </main>
