@@ -102,7 +102,8 @@
     ========================================================= */
 
     var SESSION_KEY =
-        'innovexaSplashShown';
+        'innovexaSplashShown_' +
+        (window.innerWidth <= 640 ? 'mobile' : 'desktop');
 
     var alreadyShown = false;
 
