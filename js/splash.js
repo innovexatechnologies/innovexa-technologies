@@ -372,7 +372,7 @@
     var dpr =
         Math.min(
             window.devicePixelRatio || 1,
-            1.5
+            window.innerWidth <= 640 ? 1.25 : 1.5
         );
 
 
@@ -1987,14 +1987,14 @@
             if (width <= 480) {
 
                 targetCount =
-                    1200;
+                    600;
 
             }
 
             else if (width <= 640) {
 
                 targetCount =
-                    1500;
+                    850;
 
             }
 
