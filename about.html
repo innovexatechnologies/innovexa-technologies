@@ -153,5 +153,29 @@
   <div class="container footer-bottom"><p>&copy; <span id="year"></span> Innovexa Technologies. All rights reserved.</p></div>
 </footer> -->
 <script src="js/shared-shell.js"></script>
+<script>
+(function () {
+  var footerHost = document.getElementById('shared-shell-footer-host');
+  if (!footerHost || !footerHost.shadowRoot) return;
+
+  var footerRoot = footerHost.shadowRoot;
+
+  function applyMobileSocialLayout() {
+    if (!footerRoot.querySelector('.footer-social')) return false;
+
+    var style = document.createElement('style');
+    style.textContent = '@media (max-width:600px){.footer-social{flex-wrap:nowrap!important;width:max-content;max-width:100%;gap:clamp(4px,1.4vw,6px)}.footer-social a{flex:0 0 clamp(22px,8vw,34px);width:clamp(22px,8vw,34px);height:clamp(22px,8vw,34px)}.footer-contact li:first-child{white-space:nowrap;gap:6px;font-size:clamp(10px,calc(5vw - 6px),12px)}}';
+    footerRoot.appendChild(style);
+    return true;
+  }
+
+  if (applyMobileSocialLayout()) return;
+
+  var observer = new MutationObserver(function () {
+    if (applyMobileSocialLayout()) observer.disconnect();
+  });
+  observer.observe(footerRoot, { childList: true, subtree: true });
+})();
+</script>
 <script src="js/script.js"></script><script src="js/about.js"></script>
 </body></html>
