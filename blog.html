@@ -33,9 +33,18 @@
 				document.body.appendChild(document.importNode(indexDocument.querySelector('.site-footer'), true));
 
 				const demoContent = document.getElementById('demoContent');
-				demoContent.addEventListener('load', () => {
-					demoContent.style.height = `${demoContent.contentDocument.documentElement.scrollHeight}px`;
-				});
+				const syncDemoContentHeight = () => {
+					const demoDocument = demoContent.contentDocument;
+					if (!demoDocument || !demoDocument.documentElement) return;
+					const documentHeight = Math.max(
+						demoDocument.documentElement.scrollHeight,
+						demoDocument.body ? demoDocument.body.scrollHeight : 0
+					);
+					demoContent.style.height = `${documentHeight}px`;
+				};
+				demoContent.addEventListener('load', syncDemoContentHeight);
+				syncDemoContentHeight();
+				window.addEventListener('resize', syncDemoContentHeight);
 
 				const backToTop = document.importNode(indexDocument.querySelector('#backToTop'), true);
 				document.body.appendChild(backToTop);
