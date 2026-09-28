@@ -98,7 +98,36 @@
               document.head.appendChild(style);
             }
 
-            document.getElementById('services-header').appendChild(header.cloneNode(true));
+            var headerHost = document.getElementById('services-header');
+            headerHost.appendChild(header.cloneNode(true));
+
+            var nav = headerHost.querySelector('#mainNav');
+            var toggle = headerHost.querySelector('#menuToggle');
+            if (nav && toggle) {
+              toggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('open');
+                toggle.classList.toggle('active', isOpen);
+                toggle.classList.toggle('open', isOpen);
+                toggle.classList.toggle('is-open', isOpen);
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+              });
+
+              nav.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                  nav.classList.remove('open');
+                  toggle.classList.remove('active', 'open', 'is-open');
+                  toggle.setAttribute('aria-expanded', 'false');
+                });
+              });
+
+              document.addEventListener('click', function (event) {
+                if (nav.classList.contains('open') && !headerHost.contains(event.target)) {
+                  nav.classList.remove('open');
+                  toggle.classList.remove('active', 'open', 'is-open');
+                  toggle.setAttribute('aria-expanded', 'false');
+                }
+              });
+            }
 
             return footer;
           });

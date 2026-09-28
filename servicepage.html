@@ -2168,7 +2168,7 @@
 
                         <img
                             class="hero-static-image"
-                            src="assets/banners/service1.jpg"
+                            src="assets/banners/service1.webp"
                             alt="Innovexa software and digital services"
                             fetchpriority="high"
                             decoding="async"
@@ -2572,7 +2572,7 @@
 
                     <div class="commerce-visual">
 
-                        <img class="commerce-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85" alt="Digital product design and software workspace" loading="eager" decoding="async">
+                        <img class="commerce-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=75" alt="Digital product design and software workspace" loading="lazy" decoding="async">
 
                     </div>
 
@@ -2866,42 +2866,51 @@
 
         const solutionImages = [
             {
-                src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85",
+                src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=75",
                 alt: "Digital product design and software workspace"
             },
             {
-                src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85",
+                src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=75",
                 alt: "Software team collaborating on product strategy"
             },
             {
-                src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+                src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=75",
                 alt: "Analytics dashboard and business data"
             },
             {
-                src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+                src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=75",
                 alt: "Cloud infrastructure and connected technology"
             },
             {
-                src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+                src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=75",
                 alt: "Software engineers building a digital product"
             }
         ];
         const commerceImage = document.querySelector(".commerce-image");
 
-        solutionImages.slice(1).forEach(function (image) {
-            const preload = new Image();
-            preload.src = image.src;
-        });
-
         let activeSolution = 0;
-        window.setInterval(function () {
-            activeSolution = (activeSolution + 1) % solutionDetails.length;
-            commerceImage.src = solutionImages[activeSolution].src;
-            commerceImage.alt = solutionImages[activeSolution].alt;
-            solutionDetails.forEach(function (detail, index) {
-                detail.classList.toggle("is-active", index === activeSolution);
-            });
-        }, 3000);
+        function startSolutionCarousel() {
+            window.setInterval(function () {
+                activeSolution = (activeSolution + 1) % solutionDetails.length;
+                commerceImage.src = solutionImages[activeSolution].src;
+                commerceImage.alt = solutionImages[activeSolution].alt;
+                solutionDetails.forEach(function (detail, index) {
+                    detail.classList.toggle("is-active", index === activeSolution);
+                });
+            }, 3000);
+        }
+
+        if ("IntersectionObserver" in window && commerceImage) {
+            const solutionCarouselObserver = new IntersectionObserver(function (entries, observer) {
+                if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                    startSolutionCarousel();
+                    observer.disconnect();
+                }
+            }, { rootMargin: "120px" });
+            solutionCarouselObserver.observe(commerceImage);
+        } else {
+            startSolutionCarousel();
+        }
 
 
         /* =====================================================
