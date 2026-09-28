@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/splash.css">
+<script src="js/splash.js" defer></script>
 <style>
   :root{
     --bg-black:#04060c;
@@ -5236,6 +5238,20 @@
 </style>
 </head>
 <body>
+<div class="splash-screen" id="splashScreen" role="presentation" aria-hidden="true">
+    <div class="splash-bg" aria-hidden="true"></div>
+    <div class="splash-vignette" aria-hidden="true"></div>
+    <div class="splash-noise" aria-hidden="true"></div>
+    <canvas class="splash-canvas" id="splashCanvas" aria-hidden="true"></canvas>
+    <div class="splash-stage">
+        <div class="splash-mark-shell">
+            <div class="splash-halo" aria-hidden="true"></div>
+            <img class="splash-source-logo" id="splashLogo" src="assets/logo.jpg" alt="" aria-hidden="true" fetchpriority="high">
+            <div class="splash-logo-glow" aria-hidden="true"></div>
+        </div>
+        <p class="splash-name" id="splashName"><span>Innovexa</span> <b>Technologies</b></p>
+    </div>
+</div>
 
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="header">

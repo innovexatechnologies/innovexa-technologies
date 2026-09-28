@@ -49,6 +49,10 @@
     var nameEl =
         document.getElementById('splashName');
 
+    var isHomePage =
+        window.location.pathname === '/' ||
+        /(?:^|\/)index\.html?$/.test(window.location.pathname);
+
 
     /* =========================================================
        BLACKOUT (APPLIED IMMEDIATELY)
@@ -118,9 +122,11 @@
 
     if (alreadyShown) {
 
-        window.location.replace(
-            'index.html'
-        );
+        if (isHomePage) {
+            splash.parentNode.removeChild(splash);
+        } else {
+            window.location.replace('index.html');
+        }
 
         return;
 
@@ -196,9 +202,9 @@
 
                 }
 
-                window.location.replace(
-                    'index.html'
-                );
+                if (!isHomePage) {
+                    window.location.replace('index.html');
+                }
 
             },
             500
