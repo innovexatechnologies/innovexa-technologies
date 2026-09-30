@@ -2028,14 +2028,14 @@
             if (width <= 480) {
 
                 targetCount =
-                    120;
+                    600;
 
             }
 
             else if (width <= 640) {
 
                 targetCount =
-                    180;
+                    850;
 
             }
 
