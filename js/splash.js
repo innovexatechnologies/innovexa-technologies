@@ -369,10 +369,13 @@
        DPR
     ========================================================= */
 
+    var isMobileViewport =
+        window.innerWidth <= 640;
+
     var dpr =
         Math.min(
             window.devicePixelRatio || 1,
-            window.innerWidth <= 640 ? 1.25 : 1.5
+            isMobileViewport ? 1 : 1.5
         );
 
 
@@ -1076,11 +1079,13 @@
 
     function easeOutCubic(t) {
 
+        var inverse =
+            1 - t;
+
         return 1 -
-            Math.pow(
-                1 - t,
-                3
-            );
+            inverse *
+            inverse *
+            inverse;
 
     }
 
@@ -1096,11 +1101,14 @@
 
         }
 
+        var inverse =
+            2 -
+            2 * t;
+
         return 1 -
-            Math.pow(
-                -2 * t + 2,
-                3
-            ) / 2;
+            inverse *
+            inverse *
+            inverse / 2;
 
     }
 
@@ -1903,6 +1911,7 @@
                  * are travelling.
                  */
                 var microMove =
+                    !isMobileViewport &&
                     travelT < 1
                         ? Math.sin(
                             now /

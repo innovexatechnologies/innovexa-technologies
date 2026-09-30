@@ -6812,6 +6812,18 @@
 <script>
 (() => {
     const frames = document.querySelectorAll(".embedded-home-sections .home-iframe");
+    const preloadObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.loading = "eager";
+            preloadObserver.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: window.matchMedia("(max-width: 720px)").matches
+            ? "2400px 0px"
+            : "1400px 0px"
+    });
 
     const resizeFrame = (frame) => {
         try {
@@ -6832,6 +6844,8 @@
     };
 
     frames.forEach((frame) => {
+        preloadObserver.observe(frame);
+
         frame.addEventListener("load", () => {
             const updateHeight = () => requestAnimationFrame(() => resizeFrame(frame));
             const frameDocument = frame.contentDocument;
