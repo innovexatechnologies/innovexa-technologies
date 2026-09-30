@@ -163,8 +163,7 @@
         }
 
         .stack-card {
-            position: sticky;
-            top: 94px;
+            position: relative;
             width: min(920px, 100%);
             height: min(560px, 74vh);
             min-height: 500px;
@@ -181,12 +180,8 @@
                 0 12px 24px rgba(1, 7, 13, 0.30),
                 inset 0 1px 0 rgba(173, 204, 255, 0.07);
 
-            will-change: transform;
-            transition: transform 0.12s linear;
             isolation: isolate;
         }
-
-        .stack-card.is-stacked { transform: scale(0.97); }
 
         /* ===== IMAGE AREA — enlarged so it fills the card, no empty gap ===== */
         .stack-card-image {
@@ -268,7 +263,7 @@
             .stack-section { padding: 70px 0 50px; }
             .stack-heading { width: calc(100% - 40px); }
             .stack-track { width: calc(100% - 48px); }
-            .stack-card { top: 70px; width: 100%; height: min(540px, 72vh); min-height: 480px; border-radius: 26px; }
+            .stack-card { width: 100%; height: min(540px, 72vh); min-height: 480px; border-radius: 26px; }
             .stack-card-image { height: 360px; border-radius: 26px 26px 0 0; }
             .stack-card-inner { padding: 20px 38px 36px; }
             .stack-card-title { font-size: clamp(1.55rem, 3.6vw, 2.1rem); }
@@ -281,7 +276,7 @@
             .stack-heading h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
             .stack-heading p { font-size: 0.94rem; line-height: 1.6; }
             .stack-track { width: calc(100% - 28px); }
-            .stack-card { top: 58px; height: 500px; min-height: 500px; margin-bottom: 16px; border-radius: 24px; }
+            .stack-card { height: 500px; min-height: 500px; margin-bottom: 16px; border-radius: 24px; }
             .stack-card-image { height: 330px; border-radius: 24px 24px 0 0; }
             .stack-card-inner { padding: 18px 30px 30px; }
             .stack-card-title { font-size: clamp(1.45rem, 6vw, 1.9rem); line-height: 1.16; }
@@ -298,7 +293,7 @@
             .stack-heading h2 { font-size: clamp(1.65rem, 8vw, 2.1rem); }
             .stack-heading p { margin-top: 13px; font-size: 0.88rem; }
             .stack-track { width: calc(100% - 20px); }
-            .stack-card { top: 48px; width: 100%; height: 470px; min-height: 470px; margin-bottom: 14px; border-radius: 21px; }
+            .stack-card { width: 100%; height: 470px; min-height: 470px; margin-bottom: 14px; border-radius: 21px; }
             .stack-card-image { height: 300px; border-radius: 21px 21px 0 0; }
             .stack-card-inner { padding: 16px 22px 24px; }
             .stack-card-text { max-width: 100%; }
@@ -466,43 +461,7 @@
             const cards = Array.from(document.querySelectorAll(".stack-card"));
             if (!cards.length) return;
 
-            function updateStack() {
-                const viewportHeight = window.innerHeight;
-
-                cards.forEach(function (card, index) {
-                    const rect = card.getBoundingClientRect();
-                    const nextCard = cards[index + 1];
-
-                    if (!nextCard) {
-                        card.classList.remove("is-stacked");
-                        return;
-                    }
-
-                    const nextRect = nextCard.getBoundingClientRect();
-
-                    const isBeingCovered =
-                        nextRect.top <= rect.top + 210 &&
-                        rect.top <= viewportHeight;
-
-                    card.classList.toggle("is-stacked", isBeingCovered);
-                });
-            }
-
-            let ticking = false;
-            function requestUpdate() {
-                if (ticking) return;
-                ticking = true;
-                window.requestAnimationFrame(function () {
-                    updateStack();
-                    ticking = false;
-                });
-            }
-
-            window.addEventListener("scroll", requestUpdate, { passive: true });
-            window.addEventListener("resize", requestUpdate);
-            updateStack();
-
-            const stackSection = document.querySelector(".stack-section");
+            const stackTrack = document.getElementById("stackTrack");
             let currentCard = 1;
             let timer = null;
             let frame = null;
@@ -524,7 +483,8 @@
             function moveToNextCard() {
                 if (!active || hovered || currentCard >= cards.length) return;
 
-                const topOffset = window.innerWidth <= 700 ? 58 : 94;
+                const header = document.querySelector(".site-header");
+                const topOffset = (header ? header.getBoundingClientRect().height : 0) + 12;
                 startPosition = window.scrollY;
                 targetPosition = window.scrollY + cards[currentCard].getBoundingClientRect().top - topOffset;
                 startTime = performance.now();
@@ -592,7 +552,7 @@
                 scheduleNextMove();
             }, { threshold: 0.01 });
 
-            stackObserver.observe(stackSection);
+            stackObserver.observe(stackTrack);
         })();
     </script>
 

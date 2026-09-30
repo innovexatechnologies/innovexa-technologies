@@ -564,7 +564,7 @@
         /*
          * Large sampling surface.
          */
-        var sampleSize = 1600;
+        var sampleSize = window.innerWidth <= 640 ? 900 : 1600;
 
 
         var off =
@@ -1987,14 +1987,14 @@
             if (width <= 480) {
 
                 targetCount =
-                    600;
+                    420;
 
             }
 
             else if (width <= 640) {
 
                 targetCount =
-                    850;
+                    600;
 
             }
 
