@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/responsive.css">
   <style>
+    #services-header{position:sticky;top:0;z-index:1000}
     .services-back-to-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:50%;background:linear-gradient(135deg,#8fe8ff 0%,#4ba2ff 42%,#5b6dff 100%);color:#04121c;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -14px rgba(91,109,255,.8),inset 0 1px 0 rgba(255,255,255,.48),inset 0 -4px 12px rgba(22,80,170,.4);opacity:0;pointer-events:none;cursor:pointer;transform:translateY(18px) scale(.92) perspective(600px) rotateX(22deg);transition:opacity .25s ease,transform .25s ease,box-shadow .25s ease;z-index:100}
     .services-back-to-top.is-visible{opacity:1;pointer-events:auto;transform:translateY(0) scale(1) perspective(600px) rotateX(0)}
     .services-back-to-top:hover{transform:translateY(-4px) scale(1.04) perspective(600px) rotateX(8deg);box-shadow:0 18px 34px -12px rgba(91,109,255,.95),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -4px 14px rgba(34,76,184,.42)}
@@ -105,6 +106,17 @@
 
             var nav = headerHost.querySelector('#mainNav');
             var toggle = headerHost.querySelector('#menuToggle');
+            var currentPage = window.location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html?$/i, '') || 'index';
+            if (nav) {
+              nav.querySelectorAll('a[href]').forEach(function (link) {
+                var href = link.getAttribute('href').split(/[?#]/)[0].replace(/\/+$/, '').split('/').pop().replace(/\.html?$/i, '') || 'index';
+                if (href === currentPage) {
+                  link.classList.add('active');
+                  link.setAttribute('aria-current', 'page');
+                }
+              });
+            }
+
             if (nav && toggle) {
               toggle.addEventListener('click', function () {
                 var isOpen = nav.classList.toggle('open');

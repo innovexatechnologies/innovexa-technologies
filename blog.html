@@ -51,6 +51,15 @@
 
 				const menuToggle = document.getElementById('menuToggle');
 				const mainNav = document.getElementById('mainNav');
+				const currentPage = window.location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html?$/i, '') || 'index';
+				mainNav.querySelectorAll('a[href]').forEach(link => {
+					const href = link.getAttribute('href').split(/[?#]/)[0].replace(/\/+$/, '').split('/').pop().replace(/\.html?$/i, '') || 'index';
+					if (href === currentPage) {
+						link.classList.add('active');
+						link.setAttribute('aria-current', 'page');
+					}
+				});
+
 				menuToggle.addEventListener('click', () => {
 					menuToggle.classList.toggle('active');
 					mainNav.classList.toggle('open');

@@ -10,6 +10,9 @@
   var host = document.createElement('div');
   host.id = 'shared-shell-host';
   host.setAttribute('aria-live', 'polite');
+  host.style.position = 'sticky';
+  host.style.top = '0';
+  host.style.zIndex = '1000';
   document.body.insertBefore(host, document.body.firstChild);
 
   var footerHost = document.createElement('div');
