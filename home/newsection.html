@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Innovexa — From Complexity to Clarity</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #05070d;
+      color: #eef0f5;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================================
+       MAIN SECTION
+    ========================================================= */
+
+    .transformation-section {
+      position: relative;
+      min-height: 1000px;
+      padding: 130px 30px 120px;
+      overflow: hidden;
+      isolation: isolate;
+
+      background: #05070d;
+    }
+
+
+    /* =========================================================
+       BACKGROUND GRID
+    ========================================================= */
+
+    .grid-background {
+      position: absolute;
+      inset: 0;
+
+      z-index: -5;
+
+      opacity: 0.4;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 55px 55px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 15%,
+          black 85%,
+          transparent
+        );
+    }
+
+
+    /* =========================================================
+       AMBIENT GLOW
+    ========================================================= */
+
+    .ambient-glow {
+      position: absolute;
+
+      width: 700px;
+      height: 700px;
+
+      left: 50%;
+      top: 48%;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(47, 107, 255, 0.09),
+          transparent 68%
+        );
+
+      filter: blur(12px);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: -3;
+    }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .section-container {
+      width: min(1180px, 100%);
+      margin: auto;
+      position: relative;
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .section-intro {
+      max-width: 720px;
+      margin-bottom: 85px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 11px;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #7fa6ff;
+    }
+
+    .eyebrow-line {
+      width: 32px;
+      height: 1px;
+
+      background: #4d86ff;
+
+      box-shadow:
+        0 0 10px rgba(77, 134, 255, 0.7);
+    }
+
+    .section-title {
+      font-size: clamp(42px, 6vw, 76px);
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 700;
+
+      margin-bottom: 25px;
+    }
+
+    .section-title span {
+      color: #8992ab;
+    }
+
+    .section-description {
+      max-width: 610px;
+
+      color: #8992ab;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SYSTEM AREA
+    ========================================================= */
+
+    .system-wrapper {
+      position: relative;
+
+      width: 100%;
+
+      /*
+        Extra height creates dedicated space
+        for nodes + center + status.
+      */
+
+      height: 650px;
+
+      display: block;
+    }
+
+
+    /* =========================================================
+       CONNECTIONS
+    ========================================================= */
+
+    .connections {
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+    .connection {
+      position: absolute;
+
+      height: 1px;
+
+      transform-origin: left center;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(77, 134, 255, 0.35),
+          rgba(127, 166, 255, 0.7),
+          transparent
+        );
+
+      opacity: 0.5;
+    }
+
+    .connection::after {
+      content: "";
+
+      position: absolute;
+
+      top: -2px;
+      left: 0;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: #7fa6ff;
+
+      box-shadow:
+        0 0 12px #4d86ff;
+
+      animation:
+        dataFlow 2.7s linear infinite;
+    }
+
+    @keyframes dataFlow {
+
+      0% {
+        left: 0;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+
+    }
+
+
+    /* =========================================================
+       CONNECTION POSITIONS
+    ========================================================= */
+
+    .line-left {
+      width: 240px;
+
+      left: calc(50% - 360px);
+      top: 50%;
+
+      transform: rotate(0deg);
+    }
+
+    .line-right {
+      width: 240px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: rotate(0deg);
+    }
+
+    .line-top {
+      width: 180px;
+
+      left: calc(50% - 90px);
+      top: calc(50% - 185px);
+
+      transform: rotate(90deg);
+    }
+
+    .line-bottom {
+      width: 180px;
+
+      left: calc(50% - 90px);
+      top: 50%;
+
+      transform: rotate(90deg);
+    }
+
+
+    /* =========================================================
+       CENTER CORE
+    ========================================================= */
+
+    .core {
+      position: absolute;
+
+      width: 225px;
+      height: 225px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(77, 134, 255, 0.16),
+          rgba(10, 16, 36, 0.96) 55%,
+          #05070d 72%
+        );
+
+      border:
+        1px solid rgba(127, 166, 255, 0.25);
+
+      box-shadow:
+        0 0 45px rgba(47, 107, 255, 0.15),
+        inset 0 0 55px rgba(47, 107, 255, 0.08);
+
+      z-index: 5;
+
+      transition:
+        box-shadow 0.4s ease;
+    }
+
+    .core::before {
+      content: "";
+
+      position: absolute;
+
+      inset: -18px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(77, 134, 255, 0.14);
+
+      animation:
+        pulseRing 4s ease-in-out infinite;
+    }
+
+    .core::after {
+      content: "";
+
+      position: absolute;
+
+      inset: -38px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(77, 134, 255, 0.08);
+
+      animation:
+        pulseRing 4s ease-in-out infinite 1.2s;
+    }
+
+    .system-wrapper.reveal.visible .core {
+      animation: core-arrive 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+    }
+
+    @keyframes core-arrive {
+      from {
+        opacity: 0;
+        scale: 0.72;
+      }
+
+      to {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+
+    @keyframes pulseRing {
+
+      0%,
+      100% {
+        transform: scale(0.96);
+        opacity: 0.35;
+      }
+
+      50% {
+        transform: scale(1.04);
+        opacity: 0.8;
+      }
+
+    }
+
+    .core-content {
+      text-align: center;
+
+      position: relative;
+
+      z-index: 10;
+
+      pointer-events: none;
+    }
+
+    .core-label {
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 10px;
+
+      letter-spacing: 0.25em;
+
+      color: #7fa6ff;
+
+      margin-bottom: 13px;
+    }
+
+    .core-title {
+      font-size: 25px;
+
+      font-weight: 700;
+
+      letter-spacing: -0.03em;
+
+      margin-bottom: 9px;
+    }
+
+    .core-subtitle {
+      font-family: "IBM Plex Mono", monospace;
+
+      font-size: 9px;
+
+      letter-spacing: 0.16em;
+
+      color: #8992ab;
+    }
+
+
+    /* =========================================================
+       NODES
+    ========================================================= */
+
+    .node {
+      position: absolute;
+
+      width: 245px;
+
+      min-height: 120px;
+
+      padding: 22px;
+
+      background:
+        rgba(10, 16, 36, 0.78);
+
+      border:
+        1px solid rgba(137, 146, 171, 0.16);
+
+      backdrop-filter: blur(18px);
+
+      -webkit-backdrop-filter: blur(18px);
+
+      cursor: pointer;
+
+      z-index: 8;
+
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+
+    /* IMPORTANT:
+       Nodes expand internally instead of
+       growing into the center.
+    */
+
+    .node:hover {
+      border-color:
+        rgba(77, 134, 255, 0.55);
+
+      background:
+        rgba(14, 22, 48, 0.96);
+
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(47, 107, 255, 0.07);
+
+      transform: translateY(-5px);
+    }
+
+
+    .system-wrapper.reveal.visible .node {
+      animation: node-arrive 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .system-wrapper.reveal.visible .node-top {
+      animation-delay: 0.12s;
+    }
+
+    .system-wrapper.reveal.visible .node-left {
+      animation-delay: 0.24s;
+    }
+
+    .system-wrapper.reveal.visible .node-right {
+      animation-delay: 0.36s;
+    }
+
+    .system-wrapper.reveal.visible .node-bottom {
+      animation-delay: 0.48s;
+    }
+
+    @keyframes node-arrive {
+      from {
+        opacity: 0;
+        translate: 0 18px;
+        filter: blur(6px);
+      }
+
+      to {
+        opacity: 1;
+        translate: 0 0;
+        filter: blur(0);
+      }
+    }
+
+
+    /* =========================================================
+       NODE POSITIONS
+    ========================================================= */
+
+    .node-top {
+      left: 50%;
+      top: 0;
+
+      transform:
+        translateX(-50%);
+    }
+
+    .node-top:hover {
+      transform:
+        translateX(-50%)
+        translateY(-5px);
+    }
+
+
+    .node-left {
+      left: 0;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+    }
+
+    .node-left:hover {
+      transform:
+        translateY(calc(-50% - 5px));
+    }
+
+
+    .node-right {
+      right: 0;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+    }
+
+    .node-right:hover {
+      transform:
+        translateY(calc(-50% - 5px));
+    }
+
+
+    .node-bottom {
+      left: 50%;
+      bottom: 0;
+
+      transform:
+        translateX(-50%);
+    }
+
+    .node-bottom:hover {
+      transform:
+        translateX(-50%)
+        translateY(-5px);
+    }
+
+
+    /* =========================================================
+       NODE CONTENT
+    ========================================================= */
+
+    .node-title {
+      font-size: 17px;
+
+      font-weight: 600;
+
+      letter-spacing: -0.02em;
+
+      margin-bottom: 8px;
+    }
+
+    .node-description {
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      color: #8992ab;
+
+      /*
+        Fixed height prevents
+        container from expanding
+        into the center.
+      */
+
+      height: 39px;
+
+      overflow: hidden;
+
+      transition:
+        color 0.3s ease;
+    }
+
+    .node:hover .node-description {
+      color: #c9cedb;
+    }
+
+
+    /* =========================================================
+       TAGS REMOVED
+    ========================================================= */
+
+    .node-tags {
+      display: none !important;
+    }
+
+
+    /* =========================================================
+       SYSTEM STATUS
+    ========================================================= */
+
+    .status-panel {
+      position: absolute;
+
+      right: 0;
+
+      /*
+        Status is deliberately BELOW
+        the node area.
+      */
+
+      bottom: -85px;
+
+      width: 255px;
+
+      padding: 17px 19px;
+
+      background:
+        rgba(5, 7, 13, 0.94);
+
+      border:
+        1px solid rgba(137, 146, 171, 0.14);
+
+      backdrop-filter: blur(14px);
+
+      -webkit-backdrop-filter: blur(14px);
+
+      font-family:
+        "IBM Plex Mono", monospace;
+
+      z-index: 20;
+
+      box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    .system-wrapper.reveal.visible .status-panel {
+      animation: status-arrive 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
+    }
+
+    @keyframes status-arrive {
+      from {
+        opacity: 0;
+        translate: 0 14px;
+      }
+
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+
+    .status-header {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding-bottom: 12px;
+
+      margin-bottom: 10px;
+
+      border-bottom:
+        1px solid rgba(137, 146, 171, 0.1);
+
+      font-size: 9px;
+
+      letter-spacing: 0.14em;
+
+      color: #8992ab;
+
+      text-transform: uppercase;
+    }
+
+    .status-live {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      color: #c9cedb;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #7fa6ff;
+
+      box-shadow:
+        0 0 10px rgba(127, 166, 255, 0.9);
+
+      animation:
+        livePulse 1.5s infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+
+    }
+
+    .status-item {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 6px 0;
+
+      font-size: 8px;
+
+      letter-spacing: 0.04em;
+    }
+
+    .status-item span:first-child {
+      color: #8992ab;
+    }
+
+    .status-item span:last-child {
+      color: #eef0f5;
+    }
+
+
+    /* =========================================================
+       SCAN LINE
+    ========================================================= */
+
+    .scan-line {
+      position: absolute;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(77, 134, 255, 0.15),
+          transparent
+        );
+
+      opacity: 0.5;
+
+      animation:
+        scan 7s linear infinite;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+    @keyframes scan {
+
+      from {
+        top: 0;
+      }
+
+      to {
+        top: 100%;
+      }
+
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(25px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .reveal,
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .system-wrapper.reveal.visible .node,
+      .system-wrapper.reveal.visible .core,
+      .system-wrapper.reveal.visible .status-panel,
+      .connection::after,
+      .core::before,
+      .core::after,
+      .live-dot,
+      .scan-line {
+        animation: none;
+      }
+
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 950px) {
+
+      .transformation-section {
+        min-height: 1000px;
+      }
+
+      .system-wrapper {
+        height: 650px;
+      }
+
+      .node {
+        width: 215px;
+      }
+
+      .line-left {
+        width: 175px;
+
+        left:
+          calc(50% - 285px);
+      }
+
+      .line-right {
+        width: 175px;
+      }
+
+      .status-panel {
+        bottom: -90px;
+      }
+
+    }
+
+
+    @media (min-width: 701px) and (max-width: 950px) {
+
+      .transformation-section {
+        min-height: auto;
+        padding: 72px 28px 80px;
+      }
+
+      .section-intro {
+        margin-bottom: 40px;
+      }
+
+      .section-title {
+        font-size: clamp(42px, 5.6vw, 56px);
+      }
+
+      .section-description {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .system-wrapper {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) clamp(150px, 20vw, 190px) minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        column-gap: clamp(12px, 2vw, 22px);
+        row-gap: 16px;
+        height: auto;
+      }
+
+      .connections {
+        display: none;
+      }
+
+      .node {
+        position: relative;
+        inset: auto;
+        width: auto;
+        min-height: 0;
+        padding: 18px;
+        transform: none;
+      }
+
+      .node-top {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .node-left {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .node-right {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .node-bottom {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      .system-wrapper .node-top:hover,
+      .system-wrapper .node-left:hover,
+      .system-wrapper .node-right:hover,
+      .system-wrapper .node-bottom:hover {
+        transform: translateY(-4px);
+      }
+
+      .core {
+        position: relative;
+        inset: auto;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        justify-self: center;
+        align-self: center;
+        width: clamp(150px, 20vw, 190px);
+        height: auto;
+        aspect-ratio: 1;
+        margin: 0;
+        transform: none;
+      }
+
+      .core::before {
+        inset: -8px;
+      }
+
+      .core::after {
+        inset: -16px;
+      }
+
+      .status-panel {
+        position: relative;
+        grid-column: 1 / -1;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 8px;
+      }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .transformation-section {
+        min-height: auto;
+
+        padding:
+          80px 20px 90px;
+      }
+
+      .section-intro {
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: 46px;
+      }
+
+      .section-description {
+        font-size: 14px;
+      }
+
+
+      /*
+        Mobile changes system
+        into clean vertical layout.
+      */
+
+      .system-wrapper {
+        height: auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 16px;
+      }
+
+
+      .connections {
+        display: none;
+      }
+
+
+      .core {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        transform: none;
+
+        width: 190px;
+        height: 190px;
+
+        margin:
+          30px auto 35px;
+
+        order: 0;
+      }
+
+      .core-content {
+        width: 100%;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .core-label {
+        margin-bottom: 9px;
+        font-size: clamp(7px, 2vw, 8px);
+        letter-spacing: 0.12em;
+      }
+
+      .core-title {
+        margin-bottom: 6px;
+        font-size: clamp(18px, 5.8vw, 22px);
+        letter-spacing: -0.02em;
+      }
+
+      .core-subtitle {
+        max-width: 100%;
+        font-size: clamp(6px, 1.8vw, 7px);
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .system-wrapper.reveal.visible .core {
+        animation-delay: 0s;
+      }
+
+
+      .node {
+        position: relative;
+
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+
+        width: 100%;
+
+        transform: none !important;
+
+        order: 1;
+      }
+
+      .node-top {
+        order: 1;
+      }
+
+      .system-wrapper.reveal.visible .node-top {
+        animation-delay: 0.9s;
+      }
+
+      .node-left {
+        order: 3;
+      }
+
+      .system-wrapper.reveal.visible .node-left {
+        animation-delay: 2s;
+      }
+
+      .node-right {
+        order: 4;
+      }
+
+      .system-wrapper.reveal.visible .node-right {
+        animation-delay: 3.1s;
+      }
+
+      .node-bottom {
+        order: 5;
+      }
+
+      .system-wrapper.reveal.visible .node-bottom {
+        animation-delay: 4.2s;
+      }
+
+
+      .node:hover {
+        transform:
+          translateY(-4px) !important;
+      }
+
+
+      .node-description {
+        height: auto;
+
+        min-height: 39px;
+      }
+
+
+      .status-panel {
+        position: relative;
+
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+
+        margin-top: 10px;
+
+        order: 6;
+      }
+
+
+      .ambient-glow {
+        width: 500px;
+        height: 500px;
+      }
+
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 420px) {
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .core {
+        width: 170px;
+        height: 170px;
+      }
+
+      .core-title {
+        font-size: 21px;
+      }
+
+      .node {
+        padding: 19px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       INNOVEXA TRANSFORMATION SECTION
+  ======================================================== -->
+
+  <section class="transformation-section">
+
+    <!-- Background -->
+    <div class="grid-background"></div>
+
+    <div class="ambient-glow"></div>
+
+    <div class="scan-line"></div>
+
+
+    <div class="section-container">
+
+
+      <!-- ===================================================
+           INTRO
+      ==================================================== -->
+
+      <div class="section-intro reveal">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          DIGITAL TRANSFORMATION SYSTEM
+
+        </div>
+
+
+        <h2 class="section-title">
+
+          From Complexity<br>
+
+          <span>to Clarity.</span>
+
+        </h2>
+
+
+        <p class="section-description">
+
+          Every digital product starts with a problem worth solving.
+          We observe what matters, identify what is broken,
+          engineer the right system and automate what comes next.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- ===================================================
+           SYSTEM
+      ==================================================== -->
+
+      <div class="system-wrapper reveal">
+
+
+        <!-- CONNECTION LINES -->
+
+        <div class="connections">
+
+          <div class="connection line-left"></div>
+
+          <div class="connection line-right"></div>
+
+          <div class="connection line-top"></div>
+
+          <div class="connection line-bottom"></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TOP NODE
+        ================================================== -->
+
+        <div class="node node-top">
+
+          <div class="node-title">
+            Insight
+          </div>
+
+          <div class="node-description">
+            Turning observations into a clear digital direction.
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LEFT NODE
+        ================================================== -->
+
+        <div class="node node-left">
+
+          <div class="node-title">
+            Real Problem
+          </div>
+
+          <div class="node-description">
+            We don't start with technology. We start with
+            what's actually broken.
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT NODE
+        ================================================== -->
+
+        <div class="node node-right">
+
+          <div class="node-title">
+            Digital Product
+          </div>
+
+          <div class="node-description">
+            From idea to usable digital experience built
+            around real business needs.
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOTTOM NODE
+        ================================================== -->
+
+        <div class="node node-bottom">
+
+          <div class="node-title">
+            Automation
+          </div>
+
+          <div class="node-description">
+            Remove repetitive work and connect the systems
+            that keep your business moving.
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CENTER CORE
+        ================================================== -->
+
+        <div class="core">
+
+          <div class="core-content">
+
+            <div class="core-label">
+              DIGITAL ENGINEERING
+            </div>
+
+            <div class="core-title">
+              INNOVEXA
+            </div>
+
+            <div class="core-subtitle">
+              ENGINEER WHAT COMES NEXT
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SYSTEM STATUS
+        ================================================== -->
+
+        <div class="status-panel">
+
+          <div class="status-header">
+
+            <span>
+              SYSTEM STATUS
+            </span>
+
+            <span class="status-live">
+
+              <span class="live-dot"></span>
+
+              LIVE
+
+            </span>
+
+          </div>
+
+
+          <div class="status-item">
+
+            <span>
+              System Thinking
+            </span>
+
+            <span>
+              ACTIVE
+            </span>
+
+          </div>
+
+
+          <div class="status-item">
+
+            <span>
+              Digital Engineering
+            </span>
+
+            <span>
+              ACTIVE
+            </span>
+
+          </div>
+
+
+          <div class="status-item">
+
+            <span>
+              AI Automation
+            </span>
+
+            <span>
+              READY
+            </span>
+
+          </div>
+
+
+          <div class="status-item">
+
+            <span>
+              Next Idea
+            </span>
+
+            <span>
+              WAITING
+            </span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+
+    /* =======================================================
+       SCROLL REVEAL
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const observer =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.15
+        }
+
+      );
+
+
+    revealElements.forEach((element) => {
+
+      observer.observe(element);
+
+    });
+
+
+
+    /* =======================================================
+       MOUSE PARALLAX
+       Only affects ambient glow.
+       Core will NOT move anymore,
+       preventing overlap problems.
+    ======================================================== */
+
+    const section =
+      document.querySelector(
+        ".transformation-section"
+      );
+
+    const ambient =
+      document.querySelector(
+        ".ambient-glow"
+      );
+
+
+    section.addEventListener(
+      "mousemove",
+      (event) => {
+
+        if (window.innerWidth <= 700) {
+          return;
+        }
+
+
+        const rect =
+          section.getBoundingClientRect();
+
+
+        const x =
+          (event.clientX - rect.left) /
+            rect.width -
+          0.5;
+
+
+        const y =
+          (event.clientY - rect.top) /
+            rect.height -
+          0.5;
+
+
+        ambient.style.transform =
+          `translate(
+            calc(-50% + ${x * 25}px),
+            calc(-50% + ${y * 25}px)
+          )`;
+
+      }
+    );
+
+
+    section.addEventListener(
+      "mouseleave",
+      () => {
+
+        ambient.style.transform =
+          "translate(-50%, -50%)";
+
+      }
+    );
+
+
+
+    /* =======================================================
+       CONNECTION FLOW
+    ======================================================== */
+
+    const connections =
+      document.querySelectorAll(
+        ".connection"
+      );
+
+
+    connections.forEach(
+      (connection, index) => {
+
+        connection.style
+          .querySelector;
+
+        const dot =
+          connection;
+
+        dot.style.animationDelay =
+          `${index * 0.55}s`;
+
+      }
+    );
+
+
+
+    /* =======================================================
+       CONSOLE BRAND MESSAGE
+    ======================================================== */
+
+    console.log(
+      "%c INNOVEXA TECHNOLOGIES ",
+      "background:#0a1024;color:#7fa6ff;padding:10px;font-weight:bold;"
+    );
+
+    console.log(
+      "%c Observe → Identify → Build → Automate ",
+      "color:#8992ab;"
+    );
+
+  </script>
+
+
+</body>
+</html>
