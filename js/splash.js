@@ -933,25 +933,66 @@
 
         var result = [];
 
+        if (window.innerWidth > 640) {
 
-        /*
-         * First pass:
-         * Take at least one point from every occupied cell.
-         *
-         * This is the main text visibility fix.
-         */
-        for (
-            var cell = 0;
-            cell < buckets.length;
-            cell++
-        ) {
-
-            if (
-                buckets[cell].length
+            for (
+                var cell = 0;
+                cell < buckets.length;
+                cell++
             ) {
 
+                if (buckets[cell].length) {
+
+                    result.push(
+                        buckets[cell][0]
+                    );
+
+                }
+
+            }
+
+        } else {
+
+            var occupiedCells = [];
+
+            for (
+                var mobileCell = 0;
+                mobileCell < buckets.length;
+                mobileCell++
+            ) {
+
+                if (buckets[mobileCell].length) {
+
+                    occupiedCells.push(mobileCell);
+
+                }
+
+            }
+
+
+            var coverageCount = Math.min(
+                targetCount,
+                occupiedCells.length
+            );
+
+
+            for (
+                var coverageIndex = 0;
+                coverageIndex < coverageCount;
+                coverageIndex++
+            ) {
+
+                var selectedCell =
+                    occupiedCells[
+                        Math.floor(
+                            coverageIndex *
+                            occupiedCells.length /
+                            coverageCount
+                        )
+                    ];
+
                 result.push(
-                    buckets[cell][0]
+                    buckets[selectedCell][0]
                 );
 
             }
@@ -1987,14 +2028,14 @@
             if (width <= 480) {
 
                 targetCount =
-                    420;
+                    120;
 
             }
 
             else if (width <= 640) {
 
                 targetCount =
-                    600;
+                    180;
 
             }
 
